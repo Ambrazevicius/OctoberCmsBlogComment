@@ -1,0 +1,11 @@
+fields:
+    allow_guest:
+        span: left
+        label: tallpro.blogcomments::lang.settings.allow_guest_label
+        commentAbove: tallpro.blogcomments::lang.settings.allow_guest_above
+        type: switch
+    status:
+        span: right
+        label: tallpro.blogcomments::lang.settings.status_label
+        commentAbove: tallpro.blogcomments::lang.settings.status_above
+        type: dropdown
