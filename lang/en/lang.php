@@ -14,6 +14,14 @@ return [
         'allow_guest_label' => 'Allow Guest',
         'allow_guest_above' => 'Guest posted comments',
         'status_label' => 'Status',
+        'login_notification' => 'Login notification',
+        'login_notification_comment' => 'for example: Please Login to leave a comment ',
+        'approved_notification' => 'Approved comment notification',
+        'pending_notification' => 'Pending comment notification',
+
+        'approved_notification_comment' => 'For example: Thanks for your comment!',
+        'pending_notification_comment' => 'For example: Your comment is in review!',
+
         'status_above' => 'Default status for add new comment',
         'section_recaptcha_label' => 'reCAPTCHA Settings',
         'section_recaptcha_comments' => 'Show or Hide reCAPTCHA on contact us form',

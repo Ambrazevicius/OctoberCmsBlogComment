@@ -21,6 +21,8 @@ class Comments extends ComponentBase
     public $count;
     public $guest;
     public $ip;
+    public $notifications;
+
 
     public function init()
     {
@@ -30,6 +32,9 @@ class Comments extends ComponentBase
         $this->page['user'] = Auth::getUser();
         $this->page['guest'] = $this->guest;
         $this->ip = Request::ip();
+        $this->page['login_notification'] = Settings::get('login_notification');
+        $this->notifications['approved'] = Settings::get('approved_notification');
+        $this->notifications['pending'] = Settings::get('pending_notification');
     }
 
     public function onRun()
@@ -125,9 +130,9 @@ class Comments extends ComponentBase
 
             if ($model->status == 1) {
                 return ['content' => $this->renderPartial('@list.htm', ['posts' => [$model]]),
-                    'message' => 'You\'r comment is published!'];
+                    'message' => $this->notifications['approved'] ? $this->notifications['approved'] : 'You\'r comment is published!'];
             } else {
-                return ['message' => 'Thanks for the comment! We are reviewing it now!'];
+                return ['message' => $this->notifications['pending'] ? $this->notifications['pending'] : 'Thank you! We are reviewing your comment!'];
             }
 
         } else {
