@@ -1,39 +1,61 @@
-$('#send-comment').click(function(){
-    $(this).request('onComment', {
-    	success: function(data) {
+$('.send-comment').each(function () {
+    $(this).click(function () {
+        $(this).request('onComment', {
+            success: function (data) {
 
-			$('#message').html(data.message);
+                $('#message').html(data.message);
 
-			setTimeout(function() {
-				$('#message').html('');
-		    }, 5000);
+                setTimeout(function () {
+                    $('#message').html('');
+                }, 5000);
 
-	        var commentBlock = $('#all-comments');
-	      	$('#tallpro_comments_comment-text').val('');
-            if ($("#tallpro_comments_user_email").length !== 0) {
-                $("#tallpro_comments_user_email").val('');
+                var commentBlock = $('#all-comments');
+                if (data.child) {
+                    commentBlock = $('#child-comments-' + data.id);
+                    if (!commentBlock.length) {
+                        $('#block-' + data.id).append('<ul id="child-comments-' + data.id + '"></ul>');
+                        commentBlock = $('#child-comments-' + data.id);
+                    }
+                }
+
+                $('#tallpro_comments_comment-text').val('');
+
+                $('.comment-field').each(function (e) {
+                    $(this).val('');
+                })
+
+                $('.name-field').each(function (e) {
+                    if ($(this).length !== 0) {
+                        $(this).val('');
+                    }
+                });
+
+                $('.email-field').each(function (e) {
+                    if ($(this).length !== 0) {
+                        $(this).val('');
+                    }
+                });
+
+                $('.reply-field').each(function () {
+                    $(this).val('');
+                });
+                $('#reply-to-' + data.id).hide();
+
+                commentBlock.prepend(data.content);
+
             }
-            if ($("#tallpro_comments_user_name").length !== 0) {
-                $("#tallpro_comments_user_name").val('');
-            }
-
-			// commentBlock.append($('<ul>').html(data.content));
-			commentBlock.prepend(data.content);
-	        // this.countIncrement()
-
-    }});
+        });
+    })
 })
 
-$('.comment-reply').each(function(){
-	$(this).click(function(e){
-		e.preventDefault();
+$('.reply-button').each(function () {
+    $(this).click(function (e) {
 
-		var id = $(this).attr('data-id');
+        e.preventDefault();
+        var id = $(this).attr('data-id');
+        var reply_to = $('#reply-to-' + id);
 
-	console.log(id);
+        reply_to.show();
 
-            // this.clearMessage();
-            $('#comment-' + id).find('.comment-content').append($('#comment-form'));
-
-	})
+    })
 })

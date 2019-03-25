@@ -5,26 +5,26 @@
 
     {% if user == null %}
 
-    <label for="tallpro_comments_user_name_{{post_id}}">
+    <label for="tallpro_comments_user_name{{post_id}}">
         Your name
-        <input type="text" class="name-field" id="tallpro_comments_user_name_{{post_id}}" name="user_name"/>
+        <input type="text" class=" reply-field" id="tallpro_comments_user_name{{post_id}}" name="user_name"/>
     </label>
     <br>
-    <label for="tallpro_comments_user_email_{{post_id}}">
+    <label for="tallpro_comments_user_email{{post_id}}">
         Your Email address
-        <input type="text" class="email-field" id="tallpro_comments_user_email_{{post_id}}" name="user_email"/>
+        <input type="text" class=" reply-field" id="tallpro_comments_user_email{{post_id}}" name="user_email"/>
     </label>
     <br>
 
     {% endif %}
 
     <input type="hidden" value="{{post_id}}" name="parent_id" />
-    <label for="tallpro_comments_comment-text_{{post_id}}">
+    <label for="tallpro_comments_comment-text{{post_id}}">
         Comment
-        <textarea class="form-control comment-field" id="tallpro_comments_comment-text_{{post_id}}" name="comment" cols="50"
+        <textarea class="form-control reply-field" id="tallpro_comments_comment-text{{post_id}}" name="comment" cols="50"
                   rows="10"></textarea>
     </label>
-    <input name="post_id" type="hidden" value="0">
+
     <br>
     <button type="submit" data-attach-loading class='btn btn-default send-comment'>Send</button>
     <br>

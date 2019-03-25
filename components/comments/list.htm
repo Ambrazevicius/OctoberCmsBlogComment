@@ -1,5 +1,5 @@
 {% for post in posts %}
-<li>
+<li id="block-{{post.id}}">
     <div class="comment" id="comment-{{post.id}}">
 
         <section class="avatar">
@@ -26,12 +26,23 @@
                 </a>
             </div>
             <div class="raw-comment">{{post.comment|raw}}</div>
+            {% if post.parent_id == null %}
+            <br>
+                {% if post.parent_id == null and allow_reply and user %}
+                <a href="#" class="reply-button" data-id="{{post.id}}">Reply</a>
+                {% endif %}
+            {% endif %}
         </div>
         <div class="clearfix"></div>
+        {% if post.parent_id == null and allow_reply and user %}
+        <div class="reply-comment" id="reply-to-{{post.id}}">
+            {% partial "comments::reply" post_id=post.id %}
+        </div>
+        {% endif %}
     </div>
 
     {% if post.children %}
-    <ul>
+    <ul id="child-comments-{{post.id}}">
         {% partial "comments::list" posts=post.children %}
     </ul>
     {% endif %}

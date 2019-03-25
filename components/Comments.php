@@ -33,6 +33,7 @@ class Comments extends ComponentBase
         $this->page['guest'] = $this->guest;
         $this->ip = Request::ip();
         $this->page['login_notification'] = Settings::get('login_notification');
+        $this->page['allow_reply'] = Settings::get('allow_reply');
         $this->notifications['approved'] = Settings::get('approved_notification');
         $this->notifications['pending'] = Settings::get('pending_notification');
     }
@@ -84,6 +85,7 @@ class Comments extends ComponentBase
         $model = new CommentsModel();
         $model->comment = strip_tags(post('comment'));
         $model->url = $this->url;
+        $parent_id = post('parent_id');
 
         $blog_slug = $this->property('blog_slug');
 
@@ -108,6 +110,10 @@ class Comments extends ComponentBase
             ];
         }
 
+        if (is_numeric($parent_id)) {
+            $model->parent_id = $parent_id;
+        }
+
         $validation = Validator::make($data, $rules);
 
         if ($validation->fails()) {
@@ -129,7 +135,15 @@ class Comments extends ComponentBase
         if ($model->save()) {
 
             if ($model->status == 1) {
+
+                $child = false;
+                if (isset($model->parent_id)) {
+                    $child = true;
+                }
+
                 return ['content' => $this->renderPartial('@list.htm', ['posts' => [$model]]),
+                    'id' => $model->parent_id,
+                    'child' => $child,
                     'message' => $this->notifications['approved'] ? $this->notifications['approved'] : 'You\'r comment is published!'];
             } else {
                 return ['message' => $this->notifications['pending'] ? $this->notifications['pending'] : 'Thank you! We are reviewing your comment!'];

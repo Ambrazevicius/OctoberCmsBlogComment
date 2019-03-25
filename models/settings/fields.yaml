@@ -9,6 +9,11 @@ fields:
         label: tallpro.blogcomments::lang.settings.status_label
         commentAbove: tallpro.blogcomments::lang.settings.status_above
         type: dropdown
+    allow_reply:
+        span: left
+        label: tallpro.blogcomments::lang.settings.allow_reply_label
+        commentAbove: tallpro.blogcomments::lang.settings.allow_reply_comment
+        type: switch
     login_notification:
         span: full
         label: tallpro.blogcomments::lang.settings.login_notification

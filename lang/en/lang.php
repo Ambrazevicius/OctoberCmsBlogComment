@@ -22,6 +22,9 @@ return [
         'approved_notification_comment' => 'For example: Thanks for your comment!',
         'pending_notification_comment' => 'For example: Your comment is in review!',
 
+        'allow_reply_label' => 'Allow to Reply',
+        'allow_reply_comment' => 'Allow to reply to comments(Only Logged in able to reply)',
+
         'status_above' => 'Default status for add new comment',
         'section_recaptcha_label' => 'reCAPTCHA Settings',
         'section_recaptcha_comments' => 'Show or Hide reCAPTCHA on contact us form',

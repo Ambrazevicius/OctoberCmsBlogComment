@@ -5,3 +5,5 @@
     - create_tallpro_blogcomments_comments.php
 1.0.3:
     - 'Add more control to notifications in settings section + tidy up form'
+1.0.4:
+    - 'Add "Allow reply" functionality. Allow reply to a comment only if user is logged in.'
