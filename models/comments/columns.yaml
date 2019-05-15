@@ -3,6 +3,10 @@ columns:
         label: Comment
         type: text
         searchable: true
+    user_email:
+        label: User Email
+        type: text
+        searchable: true
     created_at:
         label: Date
         type: datetime
