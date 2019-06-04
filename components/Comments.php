@@ -89,7 +89,12 @@ class Comments extends ComponentBase
 
         $blog_slug = $this->property('blog_slug');
 
-        $post = PostModel::where('slug', '=', $blog_slug)->first();
+        // $post = PostModel::where('slug', '=', $blog_slug)->first();
+    
+        $post = new PostModel();
+        $post = ($post->isClassExtendedWith('RainLab.Translate.Behaviors.TranslatableModel') 
+            ? $post->transWhere('slug', $blog_slug) : $post->where('slug', $blog_slug))->first();
+
 
         if (!$post) {
             throw new ApplicationException('tallpro.blogcomments::lang.settings.no_post');
