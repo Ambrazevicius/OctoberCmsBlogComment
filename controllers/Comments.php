@@ -10,6 +10,8 @@ class Comments extends Controller
     public $listConfig = 'config_list.yaml';
     public $formConfig = 'config_form.yaml';
 
+    public $requiredPermissions = ['tallpro.blogcomments.manage_comments'];
+
     public function __construct()
     {
         parent::__construct();

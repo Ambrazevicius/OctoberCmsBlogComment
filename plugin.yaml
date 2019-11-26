@@ -9,3 +9,5 @@ navigation:
         label: Comments
         url: tallpro/blogcomments/comments
         icon: icon-file-text
+        permissions:
+            - tallpro.blogcomments.manage_comments

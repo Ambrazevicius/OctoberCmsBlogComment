@@ -37,5 +37,9 @@ return [
         'no_post' => 'We can\'t recognise your blog post. Make sure your component settings are right.',
         'blog_slug' => 'Blog Slug',
         'blog_slug_comment' => 'By default is ":slug" but maybe yours is ":blogslug" or ":blog-slug". We need to identify your post slug.'
-    ]
+    ],
+    'permissions' => [
+        'comments_tab' => 'Blog Comments',
+        'comments_label' => 'Manage Blog Comments',
+    ],
 ];

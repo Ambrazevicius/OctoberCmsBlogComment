@@ -90,9 +90,9 @@ class Comments extends ComponentBase
         $blog_slug = $this->property('blog_slug');
 
         // $post = PostModel::where('slug', '=', $blog_slug)->first();
-    
+
         $post = new PostModel();
-        $post = ($post->isClassExtendedWith('RainLab.Translate.Behaviors.TranslatableModel') 
+        $post = ($post->isClassExtendedWith('RainLab.Translate.Behaviors.TranslatableModel')
             ? $post->transWhere('slug', $blog_slug) : $post->where('slug', $blog_slug))->first();
 
 
@@ -146,16 +146,20 @@ class Comments extends ComponentBase
                     $child = true;
                 }
 
-                return ['content' => $this->renderPartial('@list.htm', ['posts' => [$model]]),
+                return [
+                    'content' => $this->renderPartial('@list.htm', ['posts' => [$model]]),
                     'id' => $model->parent_id,
                     'child' => $child,
-                    'message' => $this->notifications['approved'] ? $this->notifications['approved'] : 'You\'r comment is published!'];
+                    'message' => $this->notifications['approved'] ? $this->notifications['approved'] : 'You\'r comment is published!'
+                ];
             } else {
                 return ['message' => $this->notifications['pending'] ? $this->notifications['pending'] : 'Thank you! We are reviewing your comment!'];
             }
 
         } else {
-            return ['content' => $this->renderPartial('@list.htm', ['message' => 'Something went wrong... Try again.'])];
+            return [
+                'content' => $this->renderPartial('@list.htm', ['message' => 'Something went wrong... Try again.'])
+            ];
 
         }
     }

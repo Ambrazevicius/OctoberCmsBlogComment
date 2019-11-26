@@ -9,3 +9,5 @@
     - 'Add "Allow reply" functionality. Allow reply to a comment only if user is logged in.'
 1.0.5:
     - 'Fix - Rainlab Translate plugin fix'
+1.0.6:
+    - 'Feature - Added permissions settings'

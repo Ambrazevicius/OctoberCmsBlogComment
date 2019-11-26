@@ -37,4 +37,15 @@ class Plugin extends PluginBase
             ]
         ];
     }
+
+    public function registerPermissions()
+    {
+        return [
+            'tallpro.blogcomments.manage_comments' => [
+                'tab'   => 'rainlab.blog::lang.permissions.comments_tab',
+                'label' => 'rainlab.blog::lang.permissions.comments_label'
+            ]
+        ];
+    }
+
 }
