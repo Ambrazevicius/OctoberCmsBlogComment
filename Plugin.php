@@ -42,8 +42,8 @@ class Plugin extends PluginBase
     {
         return [
             'tallpro.blogcomments.manage_comments' => [
-                'tab'   => 'rainlab.blog::lang.permissions.comments_tab',
-                'label' => 'rainlab.blog::lang.permissions.comments_label'
+                'tab'   => 'tallpro.blogcomments::lang.permissions.comments_tab',
+                'label' => 'tallpro.blogcomments::lang.permissions.comments_label'
             ]
         ];
     }
